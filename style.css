@@ -40,11 +40,11 @@
       text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
     
-    h1::before {
+    /* h1::before {
       content: "⚽";
       margin-right: 10px;
       font-size: 1.8rem;
-    }
+    } */
     
     p.subtitle {
       color: var(--champions-light);
