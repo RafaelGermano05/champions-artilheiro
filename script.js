@@ -34,27 +34,56 @@ const SHEET_URL = "https://script.google.com/macros/s/AKfycbxUbA-h2EZtfX7qvQUhox
     }
 
     function renderRanking(data) {
-      const container = document.getElementById("ranking-list");
-      container.innerHTML = "";
+  const container = document.getElementById("ranking-list");
+  container.innerHTML = "";
 
-      data.forEach((item, index) => {
-        const row = document.createElement("div");
-        row.classList.add("consultor-row");
+  data.forEach((item, index) => {
+    const row = document.createElement("div");
+    row.classList.add("consultor-row");
 
-        const balloonImg = HUB_BALLOONS[item["HUB"]] 
-            ? `<img src="${HUB_BALLOONS[item["HUB"]]}" alt="${item["HUB"]}" loading="lazy"/>` 
-            : "";
+    // Extrai nome e primeiro sobrenome
+    const fullName = item["Consultor"] || '';
+    const shortName = fullName.split(' ')
+      .filter((part, i) => i === 0 || i === 1) // Pega apenas as duas primeiras partes
+      .join(' '); // Junta nome e primeiro sobrenome
 
-        row.innerHTML = `
-          <span>${index + 1}</span>
-          <span class="consultor-info">${item["Consultor"]} ${balloonImg}</span>
-          <span>${item["HUB"]}</span>
-          <span><strong>${item["New Mas"]}</strong></span>
-        `;
+    const balloonImg = HUB_BALLOONS[item["HUB"]] 
+        ? `<img src="${HUB_BALLOONS[item["HUB"]]}" alt="${item["HUB"]}" loading="lazy"/>` 
+        : "";
 
-        container.appendChild(row);
-      });
-    }
+    row.innerHTML = `
+      <span>${index + 1}</span>
+      <span class="consultor-info">${shortName} ${balloonImg}</span>
+      <span>${item["HUB"]}</span>
+      <span><strong>${item["New Mas"]}</strong></span>
+    `;
+
+    container.appendChild(row);
+  });
+}
+
+    // function renderRanking(data) {
+    //   const container = document.getElementById("ranking-list");
+    //   container.innerHTML = "";
+
+    //   data.forEach((item, index) => {
+    //     const row = document.createElement("div");
+    //     row.classList.add("consultor-row");
+
+    //     const balloonImg = HUB_BALLOONS[item["HUB"]] 
+    //         ? `<img src="${HUB_BALLOONS[item["HUB"]]}" alt="${item["HUB"]}" loading="lazy"/>` 
+    //         : "";
+
+    //     row.innerHTML = `
+    //       <span>${index + 1}</span>
+    //       <span class="consultor-info">${item["Consultor"]} ${balloonImg}</span>
+    //       <span>${item["HUB"]}</span>
+    //       <span><strong>${item["New Mas"]}</strong></span>
+    //     `;
+
+    //     container.appendChild(row);
+    //   });
+    // }
 
     function updateLastUpdated() {
       const now = new Date();
