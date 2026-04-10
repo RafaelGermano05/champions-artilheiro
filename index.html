@@ -3,402 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Artilharia da Campanha NASCAR</title>
+  <title>Nascar Racing - Corrida pela Liderança</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="assets/logos/WhatsApp Image 2025-05-28 at 14.06.23.jpeg" type="image/x-icon">
-  <style>
-    /* VARIÁVEIS NASCAR */
-    :root {
-      --nascar-red: #E31837;
-      --nascar-dark: #0a0a0a;
-      --nascar-yellow: #FFD200;
-      --nascar-white: #FFFFFF;
-      --nascar-gray: #2C2C2C;
-      --nascar-checkered: repeating-linear-gradient(
-        90deg,
-        #000 0px,
-        #000 20px,
-        #fff 20px,
-        #fff 40px
-      );
-    }
-    
+</head>
+<style>
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(227, 24, 55, 0.3)), 
-                  url('https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+      background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.8)), 
+                  url('https://images.unsplash.com/photo-1581622558663-b2e33377dfb2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
       background-size: cover;
-      color: var(--nascar-white);
+      color: white;
       min-height: 100vh;
-      position: relative;
     }
-    
-    /* Bandeira quadriculada no topo e rodapé */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 8px;
-      background: var(--nascar-checkered);
-      z-index: 100;
-    }
-    
-    body::after {
-      content: '';
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 8px;
-      background: var(--nascar-checkered);
-      z-index: 100;
-    }
-    
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem;
-      position: relative;
-      z-index: 1;
-    }
-    
-    header {
-      text-align: center;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 3px solid var(--nascar-red);
-      position: relative;
-    }
-    
-    /* Elemento decorativo NASCAR - pista */
-    header::after {
-      content: '🏁🏁🏁';
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--nascar-dark);
-      padding: 0 15px;
-      font-size: 0.8rem;
-      letter-spacing: 3px;
-      color: var(--nascar-yellow);
-    }
-    
-    h1 {
-      font-size: 2.5rem;
-      color: var(--nascar-yellow);
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      text-shadow: 3px 3px 0px var(--nascar-red);
-      font-weight: 900;
-    }
-    
-    h1 i {
-      color: var(--nascar-red);
-      margin-right: 10px;
-    }
-    
-    p.subtitle {
-      color: var(--nascar-white);
-      font-size: 1rem;
-      margin-top: 0.8rem;
-      letter-spacing: 2px;
-      font-weight: 600;
-      background: rgba(0, 0, 0, 0.6);
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      border-radius: 30px;
-      border-left: 4px solid var(--nascar-yellow);
-    }
-    
-    .ranking-container {
-      background: rgba(0, 0, 0, 0.75);
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 0 2px var(--nascar-yellow);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--nascar-red);
-    }
-    
-    .ranking-header {
-      display: grid;
-      grid-template-columns: 50px 1fr 150px 100px;
-      padding: 1rem;
-      background: linear-gradient(135deg, var(--nascar-red), var(--nascar-dark));
-      font-weight: 900;
-      color: var(--nascar-yellow);
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      letter-spacing: 2px;
-      border-bottom: 2px solid var(--nascar-yellow);
-    }
-    
-    .ranking-list {
-      max-height: 60vh;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: var(--nascar-red) var(--nascar-gray);
-    }
-    
-    .ranking-list::-webkit-scrollbar {
-      width: 8px;
-    }
-    
-    .ranking-list::-webkit-scrollbar-track {
-      background: var(--nascar-gray);
-    }
-    
-    .ranking-list::-webkit-scrollbar-thumb {
-      background-color: var(--nascar-red);
-      border-radius: 4px;
-    }
-    
-    .consultor-row {
-      display: grid;
-      grid-template-columns: 50px 1fr 150px 100px;
-      padding: 1rem;
-      align-items: center;
-      border-bottom: 1px solid rgba(227, 24, 55, 0.3);
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    
-    .consultor-row:hover {
-      background: rgba(227, 24, 55, 0.2);
-      transform: translateX(5px);
-    }
-    
-    .consultor-row:nth-child(odd) {
-      background: rgba(255, 255, 255, 0.03);
-    }
-    
-    /* Destaque para os top 3 como pódio NASCAR */
-    .consultor-row:nth-child(-n+3) {
-      background: linear-gradient(90deg, rgba(227, 24, 55, 0.3), transparent);
-      border-left: 4px solid var(--nascar-yellow);
-    }
-    
-    .consultor-row:nth-child(1) {
-      background: linear-gradient(90deg, rgba(255, 210, 0, 0.25), transparent);
-    }
-    
-    .consultor-row:nth-child(1) span:first-child {
-      color: var(--nascar-yellow);
-      font-weight: 900;
-      font-size: 1.4rem;
-      text-shadow: 0 0 5px rgba(227, 24, 55, 0.8);
-    }
-    
-    /* Medalhas NASCAR para os 3 primeiros */
-    .consultor-row:nth-child(1) span:first-child::before {
-      content: '🏆';
-      margin-right: 5px;
-      font-size: 1rem;
-    }
-    
-    .consultor-row:nth-child(2) span:first-child::after {
-      content: '🥈';
-      margin-left: 5px;
-      font-size: 0.9rem;
-    }
-    
-    .consultor-row:nth-child(3) span:first-child::after {
-      content: '🥉';
-      margin-left: 5px;
-      font-size: 0.9rem;
-    }
-    
-    .consultor-info {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    
-    .consultor-row img {
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 5px rgba(255, 210, 0, 0.5));
-    }
-    
-    .consultor-row strong {
-      color: var(--nascar-yellow);
-      font-size: 1.1rem;
-      font-weight: 800;
-    }
-    
-    footer {
-      margin-top: 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.7);
-      padding-top: 1rem;
-      border-top: 2px solid var(--nascar-red);
-      font-weight: 600;
-    }
-    
-    footer i {
-      color: var(--nascar-yellow);
-      margin: 0 5px;
-    }
-    
-    .last-updated {
-      text-align: center;
-      margin-top: 1rem;
-      font-size: 0.8rem;
-      color: var(--nascar-yellow);
-      background: rgba(0, 0, 0, 0.5);
-      display: inline-block;
-      width: auto;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-weight: 600;
-    }
-    
-    /* Animação de velocidade nas linhas */
-    @keyframes speedLines {
-      0% { background-position: 0 0; }
-      100% { background-position: 50px 0; }
-    }
-    
-    /* Responsivo */
-    @media (max-width: 768px) {
-      .container {
-        padding: 1rem;
-      }
-      
-      h1 {
-        font-size: 1.6rem;
-      }
-      
-      .ranking-header, .consultor-row {
-        grid-template-columns: 30px 1fr 80px 60px;
-        padding: 0.8rem;
-        font-size: 0.7rem;
-      }
-      
-      .consultor-row strong {
-        font-size: 0.9rem;
-      }
-      
-      .consultor-row img {
-        width: 24px;
-        height: 24px;
-      }
-    }
-    
-    /* Efeito de pista ao passar o mouse */
-    .ranking-container:hover {
-      box-shadow: 0 10px 40px rgba(227, 24, 55, 0.3), 0 0 0 2px var(--nascar-yellow);
-    }
-  </style>
-</head>
+</style>
 <body>
   <div class="container">
     <header>
-      <h1><i class="fas fa-flag-checkered"></i> Pilotos da NASCAR</h1>
-      <p class="subtitle"><i class="fas fa-gas-pump"></i> Atualizado diariamente • Vendas por piloto</p>
+      <h1><i class="fas fa-flag-checkered"> </i>Pole Position Racing</h1>
+      <p class="subtitle">🏁 Atualizado diariamente • Voltas completadas por consultor 🏁</p>
     </header>
     
     <div class="ranking-container">
       <div class="ranking-header">
         <span>POS</span>
         <span>Piloto</span>
-        <span>HUB</span>
-        <span>NM</span>
+        <span>Equipe</span>
+        <span>Voltas</span>
       </div>
       
-      <div id="ranking-list" class="ranking-list">
-        <!-- Conteúdo dinâmico via JavaScript -->
-      </div>
+      <div id="ranking-list" class="ranking-list"></div>
     </div>
     
-    <div id="last-updated" class="last-updated"></div>
+    <div class="last-updated" id="last-updated"></div>
     
-    <footer><i class="fas fa-wrench"></i> Desenvolvido por Rafael Germano • <i class="fas fa-flag-checkered"></i> Campanha NASCAR 2025</footer>
+    <footer>Desenvolvido por Rafael Germano • <i class="fas fa-flag-checkered"></i> NASCAR Racing Season</footer>
   </div>
-  
-  <script>
-    // Script mantido IDÊNTICO ao original para preservar lógica
-    // Apenas os dados de exemplo continuam funcionando
-    const consultores = [
-      { nome: "Rafael Germano", hub: "Premium", nm: 284, foto: "https://i.pravatar.cc/150?img=1" },
-      { nome: "Ana Silva", hub: "Elite", nm: 245, foto: "https://i.pravatar.cc/150?img=2" },
-      { nome: "Carlos Mendes", hub: "Master", nm: 198, foto: "https://i.pravatar.cc/150?img=3" },
-      { nome: "Fernanda Lima", hub: "Premium", nm: 167, foto: "https://i.pravatar.cc/150?img=4" },
-      { nome: "Rodrigo Alves", hub: "Elite", nm: 145, foto: "https://i.pravatar.cc/150?img=5" },
-      { nome: "Patrícia Souza", hub: "Start", nm: 132, foto: "https://i.pravatar.cc/150?img=6" },
-      { nome: "Luciano Costa", hub: "Master", nm: 98, foto: "https://i.pravatar.cc/150?img=7" },
-      { nome: "Juliana Rocha", hub: "Premium", nm: 87, foto: "https://i.pravatar.cc/150?img=8" }
-    ];
-    
-    function atualizarRanking() {
-      const rankingList = document.getElementById('ranking-list');
-      if (!rankingList) return;
-      
-      const sorted = [...consultores].sort((a, b) => b.nm - a.nm);
-      
-      rankingList.innerHTML = '';
-      
-      sorted.forEach((consultor, index) => {
-        const row = document.createElement('div');
-        row.className = 'consultor-row';
-        
-        const posicao = document.createElement('span');
-        posicao.textContent = (index + 1).toString();
-        
-        const consultorInfo = document.createElement('div');
-        consultorInfo.className = 'consultor-info';
-        
-        const img = document.createElement('img');
-        img.src = consultor.foto;
-        img.alt = consultor.nome;
-        
-        const nome = document.createElement('strong');
-        nome.textContent = consultor.nome;
-        
-        consultorInfo.appendChild(img);
-        consultorInfo.appendChild(nome);
-        
-        const hub = document.createElement('span');
-        hub.textContent = consultor.hub;
-        
-        const nm = document.createElement('span');
-        nm.textContent = consultor.nm.toString();
-        
-        row.appendChild(posicao);
-        row.appendChild(consultorInfo);
-        row.appendChild(hub);
-        row.appendChild(nm);
-        
-        rankingList.appendChild(row);
-      });
-    }
-    
-    function atualizarData() {
-      const lastUpdated = document.getElementById('last-updated');
-      if (lastUpdated) {
-        const now = new Date();
-        const dataFormatada = now.toLocaleDateString('pt-BR', { 
-          day: '2-digit', 
-          month: '2-digit', 
-          year: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit'
-        });
-        lastUpdated.innerHTML = `<i class="fas fa-stopwatch"></i> Última atualização: ${dataFormatada} • Temporada NASCAR 2025`;
-      }
-    }
-    
-    document.addEventListener('DOMContentLoaded', () => {
-      atualizarRanking();
-      atualizarData();
-    });
-  </script>
-</body>
-</html>
+  <script src="script.js"></script>
