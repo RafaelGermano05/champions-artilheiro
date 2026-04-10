@@ -1,179 +1,332 @@
 :root {
-      --champions-blue: #1a3e8c;
-      --champions-dark: #0a1128;
-      --champions-gold: #d4af37;
-      --champions-light: #f8f9fa;
-      --champions-accent: #e63946;
-    }
-    
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(rgba(10, 17, 40, 0.9), rgba(10, 17, 40, 0.9)), 
-                  url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      min-height: 100vh;
-    }
-    
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem;
-      position: relative;
-      z-index: 1;
-    }
-    
-    header {
-      text-align: center;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 2px solid var(--champions-gold);
-    }
-    
-    h1 {
-      font-size: 2.5rem;
-      color: var(--champions-gold);
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    }
-    
-    /* h1::before {
-      content: "⚽";
-      margin-right: 10px;
-      font-size: 1.8rem;
-    } */
-    
-    p.subtitle {
-      color: var(--champions-light);
-      font-size: 1rem;
-      margin-top: 0.5rem;
-      letter-spacing: 1px;
-    }
-    
-    .ranking-container {
-      background: rgba(26, 62, 140, 0.7);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(212, 175, 55, 0.3);
-    }
-    
-    .ranking-header {
-      display: grid;
-      grid-template-columns: 50px 1fr 150px 100px;
-      padding: 1rem;
-      background: linear-gradient(to right, var(--champions-blue), var(--champions-dark));
-      font-weight: bold;
-      color: var(--champions-gold);
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-    }
-    
-    .ranking-list {
-      max-height: 60vh;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: var(--champions-gold) var(--champions-blue);
-    }
-    
-    .ranking-list::-webkit-scrollbar {
-      width: 8px;
-    }
-    
-    .ranking-list::-webkit-scrollbar-track {
-      background: var(--champions-blue);
-    }
-    
-    .ranking-list::-webkit-scrollbar-thumb {
-      background-color: var(--champions-gold);
-      border-radius: 4px;
-    }
-    
-    .consultor-row {
-      display: grid;
-      grid-template-columns: 50px 1fr 150px 100px;
-      padding: 1rem;
-      align-items: center;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-      transition: all 0.3s ease;
-    }
-    
-    .consultor-row:hover {
-      background: rgba(212, 175, 55, 0.1);
-    }
-    
-    .consultor-row:nth-child(odd) {
-      background: rgba(255, 255, 255, 0.05);
-    }
-    
-    .consultor-row:nth-child(-n+3) {
-      background: rgba(212, 175, 55, 0.15);
-    }
-    
-    .consultor-row:nth-child(1) {
-      background: linear-gradient(to right, rgba(212, 175, 55, 0.3), transparent);
-    }
-    
-    .consultor-row:nth-child(1) span:first-child {
-      color: var(--champions-gold);
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-    
-    .consultor-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .consultor-row img {
-      width: 28px;
-      height: 28px;
-      object-fit: contain;
-    }
-    
-    .consultor-row strong {
-      color: var(--champions-gold);
-      font-size: 1.1rem;
-    }
-    
-    footer {
-      margin-top: 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.6);
-      padding-top: 1rem;
-      border-top: 1px solid rgba(212, 175, 55, 0.3);
-    }
-    
-    .last-updated {
-      text-align: center;
-      margin-top: 1rem;
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.5);
-    }
-    
-    @media (max-width: 768px) {
-      .container {
-        padding: 1rem;
-      }
-      
-      h1 {
-        font-size: 1.8rem;
-      }
-      
-      .ranking-header, .consultor-row {
-        grid-template-columns: 30px 1fr 80px 60px;
-        padding: 0.8rem;
-        font-size: 0.8rem;
-      }
-      
-      .consultor-row strong {
-        font-size: 1rem;
-      }
-    }
+  --nascar-red: #E31837;
+  --nascar-dark: #1a1a1a;
+  --nascar-black: #0a0a0a;
+  --nascar-silver: #C0C0C0;
+  --nascar-white: #f5f5f5;
+  --nascar-yellow: #FFD700;
+  --nascar-checkered: #222;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)), 
+              url('https://images.unsplash.com/photo-1581622558663-b2e33377dfb2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid var(--nascar-red);
+  position: relative;
+}
+
+header::before {
+  content: "🏁🏁🏁";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--nascar-black);
+  padding: 0 15px;
+  font-size: 0.8rem;
+  letter-spacing: 5px;
+  color: var(--nascar-red);
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--nascar-red);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 0px rgba(0,0,0,0.5);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--nascar-red), var(--nascar-yellow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h1 i {
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: var(--nascar-red);
+  margin-right: 10px;
+}
+
+p.subtitle {
+  color: var(--nascar-silver);
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.ranking-container {
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(227, 24, 55, 0.3);
+  border: 1px solid var(--nascar-red);
+  backdrop-filter: blur(3px);
+}
+
+.ranking-header {
+  display: grid;
+  grid-template-columns: 60px 1fr 180px 100px;
+  padding: 1rem 1.2rem;
+  background: linear-gradient(135deg, var(--nascar-red), var(--nascar-dark));
+  font-weight: 900;
+  color: var(--nascar-yellow);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  border-bottom: 2px solid var(--nascar-yellow);
+}
+
+.ranking-list {
+  max-height: 60vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--nascar-red) var(--nascar-black);
+}
+
+.ranking-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ranking-list::-webkit-scrollbar-track {
+  background: var(--nascar-black);
+}
+
+.ranking-list::-webkit-scrollbar-thumb {
+  background-color: var(--nascar-red);
+  border-radius: 4px;
+}
+
+.consultor-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 180px 100px;
+  padding: 0.8rem 1.2rem;
+  align-items: center;
+  border-bottom: 1px solid rgba(227, 24, 55, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.consultor-row:hover {
+  background: rgba(227, 24, 55, 0.15);
+  transform: translateX(5px);
+}
+
+.consultor-row:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Top 3 - Podium positions */
+.consultor-row:nth-child(-n+3) {
+  background: linear-gradient(90deg, rgba(227, 24, 55, 0.2), transparent);
+  border-left: 3px solid var(--nascar-yellow);
+}
+
+.consultor-row:nth-child(1) {
+  background: linear-gradient(90deg, rgba(255, 215, 0, 0.25), rgba(227, 24, 55, 0.1));
+}
+
+.consultor-row:nth-child(1) span:first-child {
+  color: var(--nascar-yellow);
+  font-weight: 900;
+  font-size: 1.4rem;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.consultor-row:nth-child(2) span:first-child {
+  color: var(--nascar-silver);
+  font-weight: 900;
+  font-size: 1.3rem;
+}
+
+.consultor-row:nth-child(3) span:first-child {
+  color: #cd7f32;
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+.consultor-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+}
+
+.consultor-row img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 5px rgba(227, 24, 55, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.consultor-row:hover img {
+  transform: rotate(5deg) scale(1.1);
+}
+
+.consultor-row strong {
+  color: var(--nascar-red);
+  font-size: 1.2rem;
+  font-weight: 900;
+  font-family: monospace;
+  letter-spacing: 1px;
+}
+
+/* Speedometer effect for NM values */
+.consultor-row span:last-child strong {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--nascar-red), #ff6b6b);
+  padding: 4px 10px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(227, 24, 55, 0.3);
+}
+
+footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  padding-top: 1rem;
+  border-top: 1px solid rgba(227, 24, 55, 0.3);
+  font-weight: 600;
+}
+
+footer i {
+  color: var(--nascar-red);
+  margin: 0 3px;
+}
+
+.last-updated {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: var(--nascar-silver);
+  font-weight: 500;
+  background: rgba(0,0,0,0.5);
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+
+/* Speed lines animation on hover for rows */
+.consultor-row::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(227, 24, 55, 0.2), transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.consultor-row:hover::after {
+  left: 100%;
+}
+
+/* Checkered flag pattern for ranking container */
+.ranking-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--nascar-black) 0px,
+    var(--nascar-black) 20px,
+    var(--nascar-white) 20px,
+    var(--nascar-white) 40px
+  );
+  opacity: 0.5;
+  border-radius: 12px 12px 0 0;
+}
+
+.ranking-container {
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+  
+  .ranking-header, .consultor-row {
+    grid-template-columns: 40px 1fr 100px 70px;
+    padding: 0.7rem;
+    font-size: 0.7rem;
+  }
+  
+  .ranking-header {
+    font-size: 0.65rem;
+  }
+  
+  .consultor-row strong {
+    font-size: 0.9rem;
+  }
+  
+  .consultor-row img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .consultor-row span:first-child {
+    font-size: 0.9rem;
+  }
+  
+  .consultor-row:nth-child(1) span:first-child {
+    font-size: 1.1rem;
+  }
+}
+
+/* Tire skid mark effect for top row */
+.consultor-row:nth-child(1)::before {
+  content: "🏆";
+  position: absolute;
+  left: -25px;
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.consultor-row:nth-child(1):hover::before {
+  opacity: 1;
+  left: 5px;
+}
