@@ -108,7 +108,7 @@ p.subtitle {
   max-height: 60vh;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--nascar-red) var(--nascar-black);
+  scrollbar-color: var(--nascar-white) var(--nascar-black);
 }
 
 .ranking-list::-webkit-scrollbar {
